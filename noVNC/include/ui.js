@@ -74,7 +74,15 @@ var UI;
 
             // if port == 80 (or 443) then it won't be present and should be
             // set manually
-            var port = window.location.port;
+            //var port = window.location.port;
+            var url = document.location.href;
+                url = url.replace('https://', '');
+                url = url.replace('http://', '');
+            var url_array = url.split('/');
+            var port = url_array[2];
+            if(isNaN(port)){
+                port=null;
+            }
             if (!port) {
                 if (window.location.protocol.substring(0,5) == 'https') {
                     port = 443;

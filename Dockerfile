@@ -3,6 +3,7 @@ MAINTAINER Doro Wu <fcwu.tw@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /home/ubuntu
+ENV PASSWORD unknown
 
 # built-in packages
 RUN apt-get update \
@@ -35,6 +36,9 @@ RUN pip install setuptools wheel && pip install -r /web/requirements.txt
 ENV TINI_VERSION v0.9.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
 RUN chmod +x /bin/tini
+
+RUN useradd -ms /bin/bash ubuntu
+RUN echo ubuntu:${PASSWORD} | chpasswd
 
 ADD noVNC /noVNC/
 ADD nginx.conf /etc/nginx/sites-enabled/default

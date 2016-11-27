@@ -197,8 +197,8 @@
             if (WebUtil.getQueryVar('host', false)) {
                 new_url += "host=" + WebUtil.getQueryVar('host', "") + "&";
             }
-            if (WebUtil.getQueryVar('port', false)) {
-                new_url += "port=" + WebUtil.getQueryVar('port', "") + "&";
+            if (WebUtil.getPortVar()) {
+                new_url += "port=" + WebUtil.getPortVar() + "&";
             }
             if (WebUtil.getQueryVar('token', false)) {
                 new_url += "token=" + WebUtil.getQueryVar('token', "") + "&";
@@ -400,7 +400,8 @@
             document.title = unescape(WebUtil.getQueryVar('title', 'noVNC'));
             // By default, use the host and port of server that served this file
             host = WebUtil.getQueryVar('host', window.location.hostname);
-            port = WebUtil.getQueryVar('port', window.location.port);
+            //port = WebUtil.getQueryVar('port', window.location.port);
+            port = WebUtil.getPortVar();
 
             // if port == 80 (or 443) then it won't be present and should be
             // set manually

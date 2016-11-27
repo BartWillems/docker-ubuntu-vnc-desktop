@@ -1,6 +1,14 @@
 docker-ubuntu-vnc-desktop
 =========================
 
+This is a fork of https://github.com/fcwu/docker-ubuntu-vnc-desktop/
+
+Changes I made:
+* Use custom ports based on the url (http://hostname/computers/$port)
+* Remove auto redirect to an authenticated vnc session
+* Set the ubuntu password at build time
+* Fixed the wallpapers
+
 [![Docker Pulls](https://img.shields.io/docker/pulls/dorowu/ubuntu-desktop-lxde-vnc.svg)](https://hub.docker.com/r/dorowu/ubuntu-desktop-lxde-vnc/)
 [![Docker Stars](https://img.shields.io/docker/stars/dorowu/ubuntu-desktop-lxde-vnc.svg)](https://hub.docker.com/r/dorowu/ubuntu-desktop-lxde-vnc/)
 

@@ -89,6 +89,21 @@ WebUtil.getQueryVar = function (name, defVal) {
         return defVal;
     }
 };
+// Bart edit:
+// Get port from the url
+WebUtil.getPortVar = function () {
+    "use strict";
+    var url = document.location.href;
+        url = url.replace('https://', '');
+        url = url.replace('http://', '');
+    var url_array = url.split('/');
+    var port = url_array[2];
+    if(isNaN(port)){
+        return null;
+    } else {
+        return port;
+    }
+};
 
 
 /*
