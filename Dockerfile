@@ -1,5 +1,5 @@
 FROM ubuntu:14.04.3
-MAINTAINER Doro Wu <fcwu.tw@gmail.com>
+MAINTAINER Bart Willems
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /home/ubuntu
@@ -13,13 +13,12 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --force-yes --no-install-recommends \
         supervisor \
-        openssh-server pwgen sudo vim-tiny \
+        openssh-server sudo vim-tiny \
         net-tools \
         lxde x11vnc xvfb \
         gtk2-engines-murrine ttf-ubuntu-font-family \
         libreoffice firefox \
         fonts-wqy-microhei \
-        language-pack-zh-hant language-pack-gnome-zh-hant firefox-locale-zh-hant libreoffice-l10n-zh-tw \
         nginx \
         python-pip python-dev build-essential \
         mesa-utils libgl1-mesa-dri \
@@ -31,7 +30,7 @@ RUN apt-get update \
 ADD web /web/
 RUN pip install setuptools wheel && pip install -r /web/requirements.txt
 
-# tini for subreap
+# tini for subreap                                   
 ENV TINI_VERSION v0.9.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
 RUN chmod +x /bin/tini
